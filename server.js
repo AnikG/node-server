@@ -3,7 +3,10 @@ const http = require("http");
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     const envVar = process.env.MY_VAR;
-    console.log("Processing request from", server.address);
+    const hostName = process.env.HOSTNAME;
+    console.log(
+      `${hostName} processing request from ${server.address().address} port ${server.address().port}`,
+    );
 
     if (envVar) {
       res.writeHead(200, { "Content-Type": "text/plain" });
