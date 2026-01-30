@@ -3,9 +3,8 @@ const http = require("http");
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     const envVar = process.env.MY_VAR;
-    const hostName = process.env.HOSTNAME;
     console.log(
-      `${hostName} processing request from ${server.address().address} port ${server.address().port}`,
+      `Processing request from ${server.address().address} port ${server.address().port}`,
     );
 
     if (envVar) {
