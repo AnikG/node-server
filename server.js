@@ -3,10 +3,11 @@ const http = require("http");
 const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     const envVar = process.env.MY_VAR;
+    console.log("Processing request from", server.address);
 
     if (envVar) {
       res.writeHead(200, { "Content-Type": "text/plain" });
-      res.end(`Environment variable: ${envVar}`);
+      res.end(`Environment variable has value: ${envVar}`);
     } else {
       res.writeHead(400, { "Content-Type": "text/plain" });
       res.end("Error: Environment variable MY_VAR is not set");
